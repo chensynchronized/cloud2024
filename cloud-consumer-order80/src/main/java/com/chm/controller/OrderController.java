@@ -24,7 +24,7 @@ public class OrderController {
         return restTemplate.postForObject(PaymentSrv_URL + "/pay/add",payDTO,ResultData.class);
     }
     @RequestMapping("/consumer/pay/get/{id}")
-    public ResultData getOrder(@PathVariable("id") Long id){
+    public ResultData getOrder(@PathVariable("id") Integer id){
         return restTemplate.getForObject(PaymentSrv_URL + "/pay/get/" + id ,ResultData.class);
     }
     @RequestMapping("/consumer/pay/update")
