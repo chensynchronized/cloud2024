@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value="cloud-payment-service")
+@FeignClient(value="cloud-gateway")
 public interface PayFeignApi {
     @PostMapping(value = "/pay/add")
     public ResultData<String> addPay(@RequestBody PayDTO payDTO);
-
-    @GetMapping(value = "/pay/get/{id}")
-    public ResultData<PayDTO> getById(@PathVariable("id") Integer id);
+//
+//    @GetMapping(value = "/pay/get/{id}")
+//    public ResultData<PayDTO> getById(@PathVariable("id") Integer id);
 
     @DeleteMapping(value = "/pay/del/{id}")
     public ResultData<Integer> deletePay(@PathVariable("id") Integer id);
@@ -36,5 +36,11 @@ public interface PayFeignApi {
 
     @RequestMapping("/pay/micrometer/{id}")
     public String myMicrometer(@PathVariable("id") Integer id);
+
+    @RequestMapping("pay/gateway/info")
+    public ResultData<String> getGatewayInfo();
+
+    @RequestMapping("/pay/gateway/get/{id}")
+    public ResultData<PayDTO> getById(@PathVariable("id") Integer id);
 
 }
